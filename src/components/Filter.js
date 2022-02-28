@@ -1,13 +1,13 @@
 import { useEffect,useContext } from "react";
 import { MoviesContext } from "../context/MoviesContext";
 const Filter = () => {
-    const {setFiltered,activeGenre,popular,setActiveGenre} = useContext(MoviesContext)
+    const {setFiltered,activeGenre,movies,setActiveGenre} = useContext(MoviesContext)
     useEffect(()=>{
         if(activeGenre ===0){
-            setFiltered(popular);
+            setFiltered(movies);
             return 
         }
-        const Filtred = popular.filter((movie)=> movie.genre_ids.includes(activeGenre))
+        const Filtred = movies.filter((movie)=> movie.genre_ids.includes(activeGenre))
         setFiltered(Filtred)
     },[activeGenre])
     return ( 

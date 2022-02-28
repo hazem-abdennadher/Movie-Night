@@ -1,21 +1,14 @@
-import Filter from "./components/Filter";
-import PopularMovies from "./components/PopularMovies";
-import { MovieProvider } from "./context/MoviesContext";
-
+import MovieSection from "./components/MoviesSection";
+import {BrowserRouter ,Routes, Route} from "react-router-dom"
 function App() {
-
   return (
-    <div className="App">
-      <MovieProvider text={"text"}>
-        <div id="hero">
-          
-        </div>
-        <h2 className="headline">Featured Movies</h2>
-        <Filter/>
-        <PopularMovies/>
-      </MovieProvider>
-    </div>
-  );
+    <BrowserRouter>
+      <Routes>
+        <Route path="/top" element ={<MovieSection type="Top_Rated" />}/>  
+        <Route path="/popular" element ={<MovieSection type="Popular" />}/>  
+      </Routes>
+    </BrowserRouter> 
+   );
 }
 
 export default App;
