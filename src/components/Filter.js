@@ -7,9 +7,9 @@ const Filter = () => {
             setFiltered(movies);
             return 
         }
-        const Filtred = movies.filter((movie)=> (movie.genre_ids.includes(activeGenre) && movie.backdrop_path ))
+        const Filtred = movies.filter((movie)=> movie.genre_ids.includes(activeGenre))
         setFiltered(Filtred)
-    },[activeGenre,movies])
+    },[activeGenre,movies,setFiltered])
     return ( 
         <div className="filter-container">
             <button className={activeGenre ===0 ? "active" : ""} onClick={()=>setActiveGenre(0)}>All</button>

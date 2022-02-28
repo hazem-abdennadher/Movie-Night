@@ -6,14 +6,19 @@ import Movie from "./Movie"
 const PopularMovies = () => {
     const {filtered,fetechMoreMovies} = useContext(MoviesContext)
     return ( 
+      <div>
         <div className="popular-movies">
             <AnimatePresence>$
               {filtered.map((movie) => {
                 return <Movie key={movie.id} movie={movie} />;
               })}
             </AnimatePresence>
-            <button onClick={()=>fetechMoreMovies()}>Show More</button>
+            
         </div>
+        <div className="show-more">
+          <button className="show-more-btn" onClick={fetechMoreMovies}><span className="text">Show More</span></button>
+        </div>
+      </div>
      );
 }
  
