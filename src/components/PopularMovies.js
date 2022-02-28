@@ -5,7 +5,6 @@ import Movie from "./Movie"
 
 const PopularMovies = () => {
     const {filtered,fetechMoreMovies} = useContext(MoviesContext)
-    console.log(filtered)
     return ( 
         <div className="popular-movies">
             <AnimatePresence>$
