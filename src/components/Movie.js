@@ -2,16 +2,16 @@ import { motion } from "framer-motion";
 import { useEffect, useState } from "react";
 const Movie = ({movie}) => {
     const [youtubeLink, setYoutubeLink] = useState("")
-    useEffect(()=>{
-        getTrailerLink()
-    },[])
-    const getTrailerLink = async () =>{
+    // useEffect(()=>{
+    //     getTrailerLink()
+    // },[])
+    // const getTrailerLink = async () =>{
 
-        const data = await fetch(`https://api.themoviedb.org/3/movie/${movie.id}/videos?api_key=62dd59a78acdf594fa1c42daa3dd7408&language=en-US`)
-        const res = await data.json();
-        const link =res.results.filter(vide => vide.type.includes("Trailer"))[0].key
-        setYoutubeLink(`https://www.youtube.com/watch?v=${link}`)
-    }
+    //     const data = await fetch(`https://api.themoviedb.org/3/movie/${movie.id}/videos?api_key=62dd59a78acdf594fa1c42daa3dd7408&language=en-US`)
+    //     const res = await data.json();
+    //     const link =res.results.filter(vide => vide.type.includes("Trailer"))[0].key
+    //     setYoutubeLink(`https://www.youtube.com/watch?v=${link}`)
+    // }
     return ( 
         <a href={youtubeLink} >
 

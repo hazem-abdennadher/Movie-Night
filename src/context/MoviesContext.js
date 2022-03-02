@@ -20,6 +20,7 @@ export const MovieProvider = ({children,type} ) => {
         setFiltered([...movies,...moviesList.results]);
         setIndex(index+1)
     }
+
     const fetchMovies = async () => {
         const data = await fetch(
             `https://api.themoviedb.org/3/movie/${type.toLowerCase()}?api_key=62dd59a78acdf594fa1c42daa3dd7408&language=en-US&page=${index}`
