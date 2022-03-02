@@ -25,12 +25,34 @@ const Slider = () => {
             setSlideIndex(5)
         }
     }
+    const moveDot = index => {
+        setSlideIndex(index)
+    }
 
     return ( 
         <div className="container-slider">
-            
+            {movies.slice(0,5).map((movie, index) => {
+                return (
+                    <div
+                    key={movie.id}
+                    className={slideIndex === index + 1 ? "slide active-anim" : "slide"}
+                    >
+                        <img 
+                        src={`https://image.tmdb.org/t/p/w1280${movie.backdrop_path}`} alt={movie.title}
+                        />
+                    </div>
+                )
+            })}
             <BtnSlider moveSlide={nextSlide} direction={"next"} />
             <BtnSlider moveSlide={prevSlide} direction={"prev"}/>
+            <div className="container-dots">
+                {Array.from({length: 5}).map((item,index) => (
+                    <div key={index}
+                    onClick={() => moveDot(index + 1)}
+                    className={slideIndex === index + 1 ? "dot active" : "dot"}
+                    ></div>
+                ))}
+            </div>
         </div>
     );
 }
