@@ -1,15 +1,25 @@
-import { useContext, useState } from "react"
+import { useContext, useEffect, useState } from "react"
 import { MoviesContext } from "../../context/MoviesContext"
 import Description from "./Description"
 import SearchBar from "./SearchBar"
 import './Slider.css'
 
 const Slider = () => {
-    const [slideIndex, setSlideIndex] = useState(1)
-
     const {movies} = useContext(MoviesContext)
-
+    const [slideIndex, setSlideIndex] = useState(1)
+    useEffect(()=>{
+        const id = setTimeout(()=>{
+            if(slideIndex ===5){
+                    setSlideIndex(1)
+                }
+                else{
+                    setSlideIndex(slideIndex+1)
+                }
+        },2000);
+        return ()=>clearTimeout(id)
+    },[slideIndex])
     
+
     const moveDot = index => {
         setSlideIndex(index)
     }
