@@ -1,6 +1,7 @@
 import { useContext, useState } from "react"
 import { MoviesContext } from "../../context/MoviesContext"
-import BtnSlider from './BtnSlider'
+import Description from "./Description"
+import SearchBar from "./SearchBar"
 import './Slider.css'
 
 const Slider = () => {
@@ -8,29 +9,19 @@ const Slider = () => {
 
     const {movies} = useContext(MoviesContext)
 
-    const nextSlide = () => {
-        if(slideIndex !== 5){
-            setSlideIndex(slideIndex + 1)
-        } 
-        else if (slideIndex === 5){
-            setSlideIndex(1)
-        }
-    }
-
-    const prevSlide = () => {
-        if(slideIndex !== 1){
-            setSlideIndex(slideIndex - 1)
-        }
-        else if (slideIndex === 1){
-            setSlideIndex(5)
-        }
-    }
+    
     const moveDot = index => {
         setSlideIndex(index)
     }
 
     return ( 
+
         <div className="container-slider">
+            <div className="overlay">
+
+            </div>
+            <SearchBar/>
+            <Description/>
             {movies.slice(0,5).map((movie, index) => {
                 return (
                     <div
@@ -43,14 +34,14 @@ const Slider = () => {
                     </div>
                 )
             })}
-            <BtnSlider moveSlide={nextSlide} direction={"next"} />
-            <BtnSlider moveSlide={prevSlide} direction={"prev"}/>
             <div className="container-dots">
                 {Array.from({length: 5}).map((item,index) => (
-                    <div key={index}
+                    <span key={index}
                     onClick={() => moveDot(index + 1)}
                     className={slideIndex === index + 1 ? "dot active" : "dot"}
-                    ></div>
+                    >
+                        {index+1}
+                    </span>
                 ))}
             </div>
         </div>

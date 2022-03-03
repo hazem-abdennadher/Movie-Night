@@ -3,7 +3,7 @@ import { useContext } from "react";
 import { MoviesContext } from "../context/MoviesContext";
 import Movie from "./Movie"
 
-const PopularMovies = () => {
+const Movies = () => {
     const {filtered,fetechMoreMovies} = useContext(MoviesContext)
     return ( 
       <div>
@@ -22,4 +22,4 @@ const PopularMovies = () => {
      );
 }
  
-export default PopularMovies;
+export default Movies;

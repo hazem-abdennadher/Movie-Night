@@ -1,7 +1,7 @@
 import { useState,useEffect } from "react";
 import { MovieProvider } from "../context/MoviesContext";
 import Filter from "./Filter";
-import PopularMovies from "./PopularMovies";
+import Movies from "./Movies";
 const MovieSection = ({type}) => {
 
     const [title, setTitle] = useState("")
@@ -26,7 +26,7 @@ const MovieSection = ({type}) => {
             <section className="section">
                 <header className="headline">{title} Movies</header>
                 <Filter/>
-                <PopularMovies/>
+                <Movies/>
             </section>
         </MovieProvider>
      );
