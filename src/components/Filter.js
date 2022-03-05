@@ -1,15 +1,13 @@
-import { useEffect,useContext } from "react";
-import { MoviesContext } from "../context/MoviesContext";
-const Filter = () => {
-    const {setFiltered,activeGenre,movies,setActiveGenre} = useContext(MoviesContext)
+import { useEffect } from "react";
+const Filter = ({movieData,setFiltered,activeGenre,setActiveGenre}) => {
     useEffect(()=>{
         if(activeGenre ===0){
-            setFiltered(movies);
+            setFiltered(movieData);
             return 
         }
-        const Filtred = movies.filter((movie)=> movie.genre_ids.includes(activeGenre))
+        const Filtred = movieData.filter((movie)=> movie.genre_ids.includes(activeGenre))
         setFiltered(Filtred)
-    },[activeGenre,movies,setFiltered])
+    },[activeGenre,movieData,setFiltered])
     return ( 
         <div className="filter-container">
             <button className={activeGenre ===0 ? "active" : ""} onClick={()=>setActiveGenre(0)}>All</button>

@@ -1,12 +1,21 @@
-
 import Slider from "../Carousel/Slider";
-import { MovieProvider } from "../../context/MoviesContext";
+import Popular from "../Sections/Popular";
 const Home = () => {
     return ( 
         <div>
-            <MovieProvider type="popular">
-                <Slider />
-            </MovieProvider>
+            <Slider />
+            <div>
+                <Popular length={5}/>
+            </div>
+            <div>
+                
+            </div>
+            <div>
+                
+            </div>
+            <div>
+                
+            </div>
         </div>
      );
 }
