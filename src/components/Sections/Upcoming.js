@@ -5,6 +5,7 @@ import Movies from "../Movies";
 const Upcoming = () => {
     const [filtered, setFiltered] = useState([]);
     const [activeGenre, setActiveGenre] = useState(0);
+    
     const {upcomingMovies} = useContext(MoviesContext)
     return ( 
         <section className="section">

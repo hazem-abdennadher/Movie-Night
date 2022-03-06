@@ -11,6 +11,7 @@ export const MovieProvider = ({children}) => {
     useEffect(()=>{
         fetchMovies()
     },[])
+
     //  const fetechMoreMovies = async() =>{
     //     const data = await fetch(
     //         `https://api.themoviedb.org/3/movie/${type.toLowerCase()}?api_key=62dd59a78acdf594fa1c42daa3dd7408&language=en-US&page=1`
