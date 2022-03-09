@@ -9,10 +9,20 @@
   margin: 5% 10%;
 }
 .headline {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+.headline h2 {
   font-size: 3rem;
   font-weight: bold;
   color: black;
-  margin-bottom: 1rem;
+}
+.headline a {
+  text-decoration: none;
+  color: #be123c;
+  cursor: pointer;
 }
 .filter-container {
   margin-bottom: 1rem;

@@ -1,16 +1,32 @@
 import { useContext, useState } from "react";
 import { MoviesContext } from "../../context/MoviesContext";
 import Filter from "../Filter";
-import Movies from "../Movies";
-const Popular = ({length,enableFilter}) => {
-    const [filtered, setFiltered] = useState([]);
+import MoviesList from "../MoviesList";
+import HeadLine from "./HeadLine";
+const Popular = ({title,type,length,enableFilter, enableSeeMore =false}) => {
+    const [filtered, setFiltered] = useState(null);
     const [activeGenre, setActiveGenre] = useState(0);
-    const {popularMovies} = useContext(MoviesContext)
+    switch (type) {
+        case "Popular": 
+            const {type:popularMovies} = useContext(MoviesContext)
+            break;
+        case "top": 
+            const {type:topMovies} = useContext(MoviesContext)
+            break;
+        case "upcoming": 
+            const {type:upcomingMovies} = useContext(MoviesContext)
+            break;
+            
+        default:
+            const {type:nowMovies} = useContext(MoviesContext)
+            break;
+    }
+
     return ( 
         <section className="section">
-            <header className="headline">Popular Movies</header>
-            {enableFilter && <Filter setFiltered={setFiltered} activeGenre={activeGenre} setActiveGenre={setActiveGenre} movieData={popularMovies} />}
-            <Movies length={length} movieData={filtered? filtered: popularMovies} />
+            <HeadLine title={title} link="./Popular" enableSeeMore ={enableSeeMore}/>
+            {enableFilter && <Filter setFiltered={setFiltered} activeGenre={activeGenre} setActiveGenre={setActiveGenre} movieData={type} />}
+            <MoviesList length={length} movieData={filtered? filtered: type} />
         </section>
     );
 }

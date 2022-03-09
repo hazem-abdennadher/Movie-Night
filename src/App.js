@@ -10,7 +10,7 @@ function App() {
     <BrowserRouter>
       <MovieProvider>
         <Routes>
-          <Route path="/popular" element ={<Popular/>}/>  
+          <Route path="/popular" element ={<Popular enableFilter/>}/>  
           <Route path="/upcoming" element ={<Upcoming/>}/>  
           <Route path="/now" element ={<Now/>}/>  
           <Route path="/top" element ={<Top/>}/>  
