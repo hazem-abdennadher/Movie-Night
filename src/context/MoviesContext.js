@@ -22,13 +22,11 @@ export const MovieProvider = ({children}) => {
     // }
     const fetchMovies = async () => {
         //---------------------------------------------------------------------------------------------------------------------------//
-        if(popularMovies.length === 0 ){
             const popularData = await fetch(
                 `https://api.themoviedb.org/3/movie/popular?api_key=62dd59a78acdf594fa1c42daa3dd7408&language=en-US&page=1`
                 );
             const popularMoviesList = await popularData.json();
             setPopularMovies(popularMoviesList.results)
-        }
         //---------------------------------------------------------------------------------------------------------------------------//
         
         const topData = await fetch(

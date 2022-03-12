@@ -15,7 +15,7 @@ const Slider = () => {
                 else{
                     setSlideIndex(slideIndex+1)
                 }
-        },3000);
+        },10000);
         return ()=>clearTimeout(id)
     },[slideIndex])
     
@@ -31,7 +31,7 @@ const Slider = () => {
 
             </div>
             <SearchBar/>
-            <Description/>
+            { popularMovies.length >0 && <Description movies={popularMovies.slice(0,5)} index={slideIndex-1}/>}
             {popularMovies.slice(0,5).map((movie, index) => {
                 return (
                     <div

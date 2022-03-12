@@ -1,24 +1,22 @@
 import Slider from "../Carousel/Slider";
-import Now from "../Sections/Now";
-import Popular from "../Sections/Popular";
-import Top from "../Sections/Top";
-import Upcoming from "../Sections/Upcoming";
+import Section from "../Sections/Section";
 const Home = () => {
     return ( 
         <div>
             <Slider />
             <div>
-                <Popular title={"Popular Movies"} length={5} enableSeeMore/>
+                <Section type="popular" length={5} link="./popular" enableSeeMore />
             </div>
-            {/* <div>
-                <Now length={5} enableSeeMore/>
+            
+            <div>
+                <Section type="upcoming" length={5} link="./upcoming" enableSeeMore />
             </div>
             <div>
-                <Upcoming length={5} enableSeeMore/>
+                <Section type="now" length={5} link="./now" enableSeeMore />
             </div>
             <div>
-                <Top length={5} enableSeeMore/>
-            </div> */}
+                <Section type="top" length={5} link="./top" enableSeeMore />
+            </div>
         </div>
      );
 }

@@ -1,7 +1,7 @@
 import { AnimatePresence } from "framer-motion";
 import Movie from "./Movie"
 
-const Movies = ({length,movieData}) => {
+const Movies = ({length,movieData }) => {
     return ( 
       <div>
         <div className="popular-movies">
@@ -11,9 +11,6 @@ const Movies = ({length,movieData}) => {
               })}
             </AnimatePresence>
             
-        </div>
-        <div className="show-more">
-          <button className="show-more-btn"><span className="text">Show More</span></button>
         </div>
       </div>
      );
