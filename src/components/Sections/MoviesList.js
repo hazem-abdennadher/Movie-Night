@@ -1,7 +1,8 @@
 import { AnimatePresence } from "framer-motion";
 import Movie from "./Movie"
 
-const Movies = ({length,movieData }) => {
+const Movies = ({length,movieData,index}) => {
+  
     return ( 
       <div>
         <div className="popular-movies">

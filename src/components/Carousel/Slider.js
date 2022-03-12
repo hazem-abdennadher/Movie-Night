@@ -15,7 +15,7 @@ const Slider = () => {
                 else{
                     setSlideIndex(slideIndex+1)
                 }
-        },10000);
+        },5000);
         return ()=>clearTimeout(id)
     },[slideIndex])
     
