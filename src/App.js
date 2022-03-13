@@ -2,7 +2,8 @@ import {BrowserRouter ,Routes, Route} from "react-router-dom"
 import { MovieProvider } from "./context/MoviesContext";
 import Home from "./components/home/Home";
 import Section from "./components/Sections/Section";
-import Footer from "./components/Footer";
+import Footer from "./components/Footer/Footer";
+import Popup from "./components/popup/Popup";
 function App() {
   return (
     <>
@@ -15,6 +16,7 @@ function App() {
             <Route path="/top" element ={<Section type={"top"} enableFilter enableShowMoreBtn/>}/>
             <Route path="/" element ={<Home/>}/>  
           </Routes>
+          <Popup />
         </MovieProvider>
       </BrowserRouter> 
       <Footer/>

@@ -5,6 +5,9 @@
   box-sizing: border-box;
   font-family: "DM Sans";
 }
+body {
+  background-color: white;
+}
 .section {
   margin: 5% 10%;
 }
@@ -53,24 +56,29 @@ button.active {
   position: relative;
   overflow: hidden;
   cursor: pointer;
+  border-radius: 1rem;
+  box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
 }
 
 .movie > .content {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  text-align: center;
-  transform: translate(-50%, -50%);
-  font-size: 0.8rem;
   filter: opacity(0);
+  position: absolute;
+  top: 30%;
+  display: flex;
+  width: 100%;
   color: white;
-  z-index: 1;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
+  flex-direction: column;
+  align-items: center;
 }
-
+.movie > .rating {
+  display: flex;
+  align-items: center;
+  width: 100%;
+}
+.movie > .date {
+  color: #b9b9b9;
+  font-size: smaller;
+}
 .movie:hover > .content {
   filter: opacity(1);
   -webkit-transition: all 0.5s ease;
@@ -79,15 +87,13 @@ button.active {
   -ms-transition: all 0.5s ease;
   transition: all 0.5s ease;
 }
-.movie > img {
+.movie > .movie-img {
   width: 100%;
   height: 30vh;
   object-fit: cover;
-  border-radius: 1rem;
-  margin-bottom: 1rem;
   z-index: -1;
 }
-.movie:hover > img {
+.movie:hover > .movie-img {
   filter: brightness(20%);
   -webkit-transition: all 0.5s ease;
   -moz-transition: all 0.5s ease;

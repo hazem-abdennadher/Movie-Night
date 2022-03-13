@@ -1,4 +1,3 @@
-
 import rating from "../../Images/rating.png"
 import playButton from "../../Images/play-button.png"
 const Description = ({movies,index}) => {
@@ -6,7 +5,7 @@ const Description = ({movies,index}) => {
         <div className="description">
             <h1>{movies[index].title}</h1>
             <div>
-                <p><img src={rating} alt="rating" />{movies[index].vote_average}</p>
+                <p><img src={rating} alt="rating" />{movies[index].vote_average}/10</p>
             </div>
             <p>
                 {movies[index].overview}

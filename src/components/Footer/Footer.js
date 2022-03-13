@@ -1,9 +1,10 @@
-import facebook from "../Images/facebook.png"
-import instagram from "../Images/instagram.png"
-import linkedIn from "../Images/linkedin.png"
-import github from "../Images/github.png"
+import facebook from "../../Images/facebook.png"
+import instagram from "../../Images/instagram.png"
+import linkedIn from "../../Images/linkedin.png"
+import github from "../../Images/github.png"
 
 const Footer = () => {
+    
     return ( 
     <div className="footer">
         <div className="socials">

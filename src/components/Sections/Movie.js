@@ -1,45 +1,28 @@
 import { motion } from "framer-motion";
-import { useEffect, useState } from "react";
-import notFound from "../../Images/not-found.png"
+import { useContext } from "react";
+import { MoviesContext } from "../../context/MoviesContext";
+import viewMore from "../../Images/view-more.png"
 const Movie = ({movie}) => {
-    const [youtubeLink, setYoutubeLink] = useState("")
-    const [imgLink , setImgLink] = useState("")
-    // useEffect(()=>{
-    //     getTrailerLink()
-    // },[])
-    // const getTrailerLink = async () =>{
-
-    //     const data = await fetch(`https://api.themoviedb.org/3/movie/${movie.id}/videos?api_key=62dd59a78acdf594fa1c42daa3dd7408&language=en-US`)
-    //     const res = await data.json();
-    //     const link =res.results.filter(vide => vide.type.includes("Trailer"))[0].key
-    //     setYoutubeLink(`https://www.youtube.com/watch?v=${link}`)
-    // }
-
-    useEffect(()=>{
-        getImage()
-    },[movie])
+    const {setMovieInfo,setTrigger} = useContext(MoviesContext)
     
-    const getImage = async()=>{
-        try {
-            const data = await fetch(`https://image.tmdb.org/t/p/w500/${movie.backdrop_path}`)
-            setImgLink(data.url)
-        } catch (error) {
-            setImgLink("")
-        }
+
+    const showPopup = ()=>{
+        setMovieInfo(movie)
+        setTrigger(true)
     }
-
+    console.log(movie)
     return ( 
-        <a href={youtubeLink} >
-
-        <motion.div initial={{opacity:0}} animate={{opacity:1}} exit={{opacity:0}} layout className="movie" >
+        <motion.div onClick={()=>showPopup()} initial={{opacity:0}} animate={{opacity:1}} exit={{opacity:0}} layout className="movie" >
+            <img className="movie-img"  src={`https://image.tmdb.org/t/p/w500/${movie.backdrop_path}`} alt={movie.title}/>
             <div className="content">
-                <h2 className="title">{movie.title}</h2>
-                <p className="date">{movie.release_date}</p>
-                
+                <img src={viewMore} alt="show more" />
+                <h4>View More</h4>
             </div>
-            <img src={imgLink ? imgLink : notFound } alt={movie.title}/>
+            <p className="date">{movie.release_date}</p>
+            <h4 className="title">{movie.title}</h4>
+           
+            
         </motion.div>
-        </a>
     );
 }
  

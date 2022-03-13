@@ -4,6 +4,10 @@ import { createContext, useState,useEffect } from "react";
 export const MoviesContext = createContext();
 
 export const MovieProvider = ({children}) => {
+
+    const [trigger,setTrigger] = useState(false);
+    const [movieInfo,setMovieInfo] = useState(null);
+
     const [popularMovies, setPopularMovies] = useState([]);
     const [popularMoviesIndex , setPopularMoviesIndex] = useState(1)
 
@@ -19,11 +23,11 @@ export const MovieProvider = ({children}) => {
         fetchMovies()
     },[])
 
-    /*const fetechMoreMovies = async(type) =>{
+    const fetechMoreMovies = async(type) =>{
         switch (type) {
             case "popular":
                 const popularData = await fetch(
-                    `https://api.themoviedb.org/3/movie/${type.toLowerCase()}?api_key=62dd59a78acdf594fa1c42daa3dd7408&language=en-US&page=${popularMoviesIndex}`
+                    `https://api.themoviedb.org/3/movie/popular?api_key=62dd59a78acdf594fa1c42daa3dd7408&language=en-US&page=${popularMoviesIndex}`
                     );
                 const popularMoviesList = await popularData.json();
                 setPopularMovies([...popularMovies, ...popularMoviesList.results]);
@@ -31,7 +35,7 @@ export const MovieProvider = ({children}) => {
                 break;
             case "now":
                 const nowData = await fetch(
-                    `https://api.themoviedb.org/3/movie/${type.toLowerCase()}?api_key=62dd59a78acdf594fa1c42daa3dd7408&language=en-US&page=${nowMoviesIndex}`
+                    `https://api.themoviedb.org/3/movie/now_playing?api_key=62dd59a78acdf594fa1c42daa3dd7408&language=en-US&page=${nowMoviesIndex}`
                     );
                 const nowMoviesList = await nowData.json();
                 setNowMovies([...nowMovies, ...nowMoviesList.results]);
@@ -39,15 +43,16 @@ export const MovieProvider = ({children}) => {
                 break;
             case "top":
                 const topData = await fetch(
-                    `https://api.themoviedb.org/3/movie/${type.toLowerCase()}?api_key=62dd59a78acdf594fa1c42daa3dd7408&language=en-US&page=${topMoviesIndex}`
+                    `https://api.themoviedb.org/3/movie/top_rated?api_key=62dd59a78acdf594fa1c42daa3dd7408&language=en-US&page=${topMoviesIndex}`
                     );
                 const topMoviesList = await topData.json();
+                
                 setTopMovies([...topMovies, ...topMoviesList.results]);
                 setTopMoviesIndex(topMoviesIndex+1)
                 break;
             case "upcoming":
                 const upcomingData = await fetch(
-                    `https://api.themoviedb.org/3/movie/${type.toLowerCase()}?api_key=62dd59a78acdf594fa1c42daa3dd7408&language=en-US&page=${upcomingMoviesIndex}`
+                    `https://api.themoviedb.org/3/movie/upcoming?api_key=62dd59a78acdf594fa1c42daa3dd7408&language=en-US&page=${upcomingMoviesIndex}`
                     );
                 const upcomingMoviesList = await upcomingData.json();
                 setUpcomingMovies([...upcomingMovies, ...upcomingMoviesList.results]);
@@ -57,7 +62,7 @@ export const MovieProvider = ({children}) => {
                 break;
         }
        
-    }*/
+    }
     const fetchMovies = async () => {
         //---------------------------------------------------------------------------------------------------------------------------//
             const popularData = await fetch(
@@ -65,14 +70,14 @@ export const MovieProvider = ({children}) => {
                 );
                 
             const popularMoviesList = await popularData.json();
-            
-            console.log(popularMoviesList)
             setPopularMovies(popularMoviesList.results)
+            setPopularMoviesIndex(popularMoviesIndex+1)
         //---------------------------------------------------------------------------------------------------------------------------//
         
             const topData = await fetch(
                 `https://api.themoviedb.org/3/movie/top_rated?api_key=62dd59a78acdf594fa1c42daa3dd7408&language=en-US&page=1`
                 );
+                
             const topMoviesList = await topData.json();
             setTopMovies(topMoviesList.results)
             setTopMoviesIndex(topMoviesIndex+1)
@@ -84,7 +89,7 @@ export const MovieProvider = ({children}) => {
                 );
             const upcomingMoviesList = await upcomingData.json();
             setUpcomingMovies(upcomingMoviesList.results)
-
+            setUpcomingMoviesIndex(upcomingMoviesIndex+1)
         //---------------------------------------------------------------------------------------------------------------------------//
         
         
@@ -99,7 +104,7 @@ export const MovieProvider = ({children}) => {
         
     };
     return(
-        <MoviesContext.Provider value={{popularMoviesIndex,topMoviesIndex,nowMoviesIndex,upcomingMoviesIndex,popularMovies,setPopularMovies,topMovies,setTopMovies,nowMovies,setNowMovies,upcomingMovies,setUpcomingMovies }}>
+        <MoviesContext.Provider value={{trigger,setTrigger,movieInfo,setMovieInfo,fetechMoreMovies,popularMoviesIndex,topMoviesIndex,nowMoviesIndex,upcomingMoviesIndex,popularMovies,setPopularMovies,topMovies,setTopMovies,nowMovies,setNowMovies,upcomingMovies,setUpcomingMovies }}>
             {children}
         </MoviesContext.Provider>
     )

@@ -44,7 +44,7 @@ const Section = ({type,link,length ,enableFilter = false, enableSeeMore = false,
                     {enableFilter && <Filter setFiltered={setFiltered} activeGenre={activeGenre} setActiveGenre={setActiveGenre} movieData={movieData} />}
                     <MoviesList length={length} index={moviesIndex} movieData={filtered? filtered: movieData} enableSeeMore={enableSeeMore} />
                     {enableShowMoreBtn && <div className="show-more">
-                                            <button className="show-more-btn" ><span className="text">Show More</span></button>
+                                            <button className="show-more-btn" onClick={()=> fetechMoreMovies(type)}><span className="text">Show More</span></button>
                                           </div>}
             </section>
     );
