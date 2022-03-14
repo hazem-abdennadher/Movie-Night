@@ -1,5 +1,6 @@
 import { useContext, useState,useEffect } from "react";
 import { MoviesContext } from "../../context/MoviesContext";
+import rating from "../../Images/rating.png"
 import Genres from "./Genres";
 import "./Popup.css"
 const Popup = () => {
@@ -30,10 +31,13 @@ const Popup = () => {
         <div className="popup">
             <div className="popup-inner">
                 <header>
-                    <h1 className="title">{movieInfo.title}</h1>
-                    <Genres genres={movieInfo.genre_ids}/>
+                        <h1 className="title">{movieInfo.title}</h1>
+                        <div className="rating">
+                            <img src={rating} alt="rating" /><span>{movieInfo.vote_average}/10</span>
+                        </div>
                 </header>
                 <div className="content">    
+                    <Genres genres={movieInfo.genre_ids}/>
                     <p className="Description"> {movieInfo.overview}</p>
                     {!error &&<div className="iframe-container">
                         <iframe width="560" height="315" src={youtubeLink} title="YouTube video player" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen></iframe>

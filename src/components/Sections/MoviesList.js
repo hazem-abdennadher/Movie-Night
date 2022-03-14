@@ -7,8 +7,8 @@ const Movies = ({length,movieData}) => {
       <div>
         <div className="popular-movies">
             <AnimatePresence>
-              {movieData.slice(0,length).filter( movie => movie.backdrop_path).map((movie) => {
-                return <Movie key={movie.id} movie={movie} />;
+              {movieData.slice(0,length).filter( movie => movie.backdrop_path).map((movie,index) => {
+                return <Movie key={movie.id+index} movie={movie} />;
               })}
             </AnimatePresence>
             

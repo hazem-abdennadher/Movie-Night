@@ -1,6 +1,12 @@
 import rating from "../../Images/rating.png"
 import playButton from "../../Images/play-button.png"
-const Description = ({movies,index}) => {
+const Description = ({movies,index,setTrigger,setMovieInfo}) => {
+    
+    const showPopup = ()=>{
+        setMovieInfo(movies[index])
+        setTrigger(true)
+    }
+    
     return ( 
         <div className="description">
             <h1>{movies[index].title}</h1>
@@ -10,7 +16,7 @@ const Description = ({movies,index}) => {
             <p>
                 {movies[index].overview}
             </p>
-            <button> <img src={playButton} alt="play trailer" />Watch Trailer</button>
+            <button onClick={()=>showPopup()}> <img src={playButton} alt="play trailer" />Watch Trailer</button>
         </div>
      );
 }

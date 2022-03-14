@@ -58,9 +58,10 @@ button.active {
   cursor: pointer;
   border-radius: 1rem;
   box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+  padding-bottom: auto;
 }
 
-.movie > .content {
+.movie > .view-more {
   filter: opacity(0);
   position: absolute;
   top: 30%;
@@ -75,11 +76,15 @@ button.active {
   align-items: center;
   width: 100%;
 }
-.movie > .date {
+.movie > .content {
+  padding: 5px;
+}
+.movie > .content p {
   color: #b9b9b9;
   font-size: smaller;
 }
-.movie:hover > .content {
+
+.movie:hover > .view-more {
   filter: opacity(1);
   -webkit-transition: all 0.5s ease;
   -moz-transition: all 0.5s ease;
@@ -106,48 +111,65 @@ button.active {
   display: flex;
   width: 100%;
   justify-content: center;
+  padding: 10px;
 }
+.error-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 10%;
+}
+#not-found {
+  max-width: 400px;
+}
+/* .show-more-btn */
 
-/* show-more-btn */
 .show-more-btn {
   align-items: center;
-  background-image: linear-gradient(144deg, #af40ff, #5b42f3 50%, #00ddeb);
-  border: 0;
-  border-radius: 8px;
-  box-shadow: rgba(151, 65, 252, 0.2) 0 15px 30px -5px;
-  color: #ffffff;
-  display: flex;
-  font-family: Phantomsans, sans-serif;
-  font-size: 20px;
+  appearance: none;
+  background-color: #fcfcfd;
+  border-radius: 4px;
+  border-width: 0;
+  box-shadow: rgba(45, 35, 66, 0.4) 0 2px 4px,
+    rgba(45, 35, 66, 0.3) 0 7px 13px -3px, #d6d6e7 0 -3px 0 inset;
+  box-sizing: border-box;
+  color: #36395a;
+  cursor: pointer;
+  display: inline-flex;
+  font-family: "JetBrains Mono", monospace;
+  height: 48px;
   justify-content: center;
-  line-height: 1em;
-  max-width: 100%;
-  min-width: 140px;
-  padding: 3px;
+  line-height: 1;
+  list-style: none;
+  overflow: hidden;
+  padding-left: 16px;
+  padding-right: 16px;
+  position: relative;
+  text-align: left;
   text-decoration: none;
+  transition: box-shadow 0.15s, transform 0.15s;
   user-select: none;
   -webkit-user-select: none;
   touch-action: manipulation;
   white-space: nowrap;
-  cursor: pointer;
+  will-change: box-shadow, transform;
+  font-size: 18px;
 }
 
-.show-more-btn:active,
+.show-more-btn:focus {
+  box-shadow: #d6d6e7 0 0 0 1.5px inset, rgba(45, 35, 66, 0.4) 0 2px 4px,
+    rgba(45, 35, 66, 0.3) 0 7px 13px -3px, #d6d6e7 0 -3px 0 inset;
+}
+
 .show-more-btn:hover {
-  outline: 0;
+  box-shadow: rgba(45, 35, 66, 0.4) 0 4px 8px,
+    rgba(45, 35, 66, 0.3) 0 7px 13px -3px, #d6d6e7 0 -3px 0 inset;
+  transform: translateY(-2px);
 }
 
-.show-more-btn span {
-  background-color: rgb(5, 6, 45);
-  padding: 16px 24px;
-  border-radius: 6px;
-  width: 100%;
-  height: 100%;
-  transition: 300ms;
-}
-
-.show-more-btn:hover span {
-  background: none;
+.show-more-btn:active {
+  box-shadow: #d6d6e7 0 3px 7px inset;
+  transform: translateY(2px);
 }
 
 @media (min-width: 768px) {
@@ -158,6 +180,67 @@ button.active {
 }
 
 /*-------------Footer-------------*/
+.scroll-to-top {
+  position: fixed;
+  bottom: 1rem;
+  right: 2rem;
+  animation: fadeIn 100ms ease-in-out 1s both;
+  cursor: pointer;
+  background-color: #36395a;
+  align-items: center;
+  appearance: none;
+  background-color: #fcfcfd;
+  border-radius: 100%;
+  border-width: 0;
+  box-shadow: rgba(45, 35, 66, 0.4) 0 2px 4px,
+    rgba(45, 35, 66, 0.3) 0 7px 13px -3px, #d6d6e7 0 -3px 0 inset;
+  box-sizing: border-box;
+  color: #36395a;
+  cursor: pointer;
+  display: inline-flex;
+  font-family: "JetBrains Mono", monospace;
+  height: 48px;
+  justify-content: center;
+  line-height: 1;
+  list-style: none;
+  overflow: hidden;
+  padding-left: 16px;
+  padding-right: 16px;
+  text-align: left;
+  text-decoration: none;
+  transition: box-shadow 0.15s, transform 0.15s;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  white-space: nowrap;
+  will-change: box-shadow, transform;
+  font-size: 18px;
+  z-index: 10;
+}
+
+.scroll-to-top:focus {
+  box-shadow: #d6d6e7 0 0 0 1.5px inset, rgba(45, 35, 66, 0.4) 0 2px 4px,
+    rgba(45, 35, 66, 0.3) 0 7px 13px -3px, #d6d6e7 0 -3px 0 inset;
+}
+
+.scroll-to-top:hover {
+  box-shadow: rgba(45, 35, 66, 0.4) 0 4px 8px,
+    rgba(45, 35, 66, 0.3) 0 7px 13px -3px, #d6d6e7 0 -3px 0 inset;
+  transform: translateY(-2px);
+}
+
+.scroll-to-top:active {
+  box-shadow: #d6d6e7 0 3px 7px inset;
+  transform: translateY(2px);
+}
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
 .footer {
   width: 100%;
   display: flex;
@@ -176,4 +259,10 @@ button.active {
 }
 .logo-link:hover {
   transform: scale(1.1);
+}
+
+@media screen and (max-width: 720px) {
+  .headline h2 {
+    font-size: 1.2rem;
+  }
 }

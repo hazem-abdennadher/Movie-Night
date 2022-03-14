@@ -3,12 +3,13 @@ import { MoviesContext } from "../../context/MoviesContext";
 import Filter from "./Filter";
 import MoviesList from "./MoviesList";
 import HeadLine from "./HeadLine";
-const Section = ({type,link,length ,enableFilter = false, enableSeeMore = false,enableShowMoreBtn=false}) => {
+import SearchBar from "../Carousel/SearchBar";
+import notFound from "../../Images/not-found.png"
+const Section = ({type,link,length ,enableFilter = false, enableSeeMore=false, enableShowMoreBtn=false, enableSearch=false}) => {
     const [filtered, setFiltered] = useState(null);
     const [activeGenre, setActiveGenre] = useState(0);
     const [movieData,setMovieData] = useState([])
-    const [moviesIndex , setMovieIndex] = useState(1)
-    const {popularMovies,topMovies,upcomingMovies,nowMovies,fetechMoreMovies,popularMoviesIndex,topMoviesIndex,nowMoviesIndex,upcomingMoviesIndex} = useContext(MoviesContext)
+    const {searchedMovies,popularMovies,topMovies,upcomingMovies,nowMovies,fetechMoreMovies} = useContext(MoviesContext)
 
     const [title,setTitle] = useState("")
     useEffect(()=>{
@@ -16,37 +17,45 @@ const Section = ({type,link,length ,enableFilter = false, enableSeeMore = false,
             case "popular":
                 setMovieData(popularMovies)
                 setTitle("Popular Movies");
-                setMovieIndex(popularMoviesIndex)
                 break;
             case "now":
                 setMovieData(nowMovies)
                 setTitle("Now Playing Movies");
-                setMovieIndex(nowMoviesIndex)
                 break;
             case "top":
                 setMovieData(topMovies)
                 setTitle("Top Rated Movies");
-                setMovieIndex(topMoviesIndex)
                 break;
             case "upcoming":
                 setMovieData(upcomingMovies)
                 setTitle("Upcoming Movies");
-                setMovieIndex(upcomingMoviesIndex)
                 break;
+            case "search" : 
+                setMovieData(searchedMovies)
+                setTitle("Search : ");
+                break
             default:
+
                 break;
         }
-    },[type,popularMovies,nowMovies,upcomingMovies,topMovies])
+    },[type,popularMovies,nowMovies,upcomingMovies,topMovies,searchedMovies])
     return ( 
-       
-            <section className="section">
-                    <HeadLine title={title} link={link} enableSeeMore ={enableSeeMore}/>
+        <div>
+            {enableSearch && <SearchBar enableStyle id="section-search"/>}
+            {movieData.length>0 && <section className="section">
+                    <HeadLine className="headline" title={title} link={link} enableSeeMore ={enableSeeMore}/>
                     {enableFilter && <Filter setFiltered={setFiltered} activeGenre={activeGenre} setActiveGenre={setActiveGenre} movieData={movieData} />}
-                    <MoviesList length={length} index={moviesIndex} movieData={filtered? filtered: movieData} enableSeeMore={enableSeeMore} />
+                    <MoviesList length={length}  movieData={filtered? filtered: movieData} enableSeeMore={enableSeeMore} />
                     {enableShowMoreBtn && <div className="show-more">
                                             <button className="show-more-btn" onClick={()=> fetechMoreMovies(type)}><span className="text">Show More</span></button>
-                                          </div>}
-            </section>
+                                          </div>}  
+            </section>}
+            {!movieData.length>0 && <section className="error-section" >
+                <img id="not-found"src={notFound} alt="not found" />
+                <h1 className=" error">Sorry We Can't Find Any Movies</h1>
+                </section> }
+        </div>
+            
     );
 }
 

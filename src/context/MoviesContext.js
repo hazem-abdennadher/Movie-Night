@@ -8,6 +8,10 @@ export const MovieProvider = ({children}) => {
     const [trigger,setTrigger] = useState(false);
     const [movieInfo,setMovieInfo] = useState(null);
 
+    const [searchKey,setSearchKey] = useState("")
+    const [searchedMovies,setSearchedMovies] = useState([])
+    const [searchedMoviesIndex , setsearchedMoviesIndex] = useState(1)
+
     const [popularMovies, setPopularMovies] = useState([]);
     const [popularMoviesIndex , setPopularMoviesIndex] = useState(1)
 
@@ -22,7 +26,13 @@ export const MovieProvider = ({children}) => {
     useEffect(()=>{
         fetchMovies()
     },[])
-
+    const fetchSearch = async()=>{
+        const data = await fetch(`https://api.themoviedb.org/3/search/movie?api_key=62dd59a78acdf594fa1c42daa3dd7408&language=en-US&page=1&query=${searchKey}`)
+        const searched = await data.json()
+        setSearchedMovies(searched.results)
+        setsearchedMoviesIndex(2)
+        console.log(searched.results)
+    }
     const fetechMoreMovies = async(type) =>{
         switch (type) {
             case "popular":
@@ -57,6 +67,15 @@ export const MovieProvider = ({children}) => {
                 const upcomingMoviesList = await upcomingData.json();
                 setUpcomingMovies([...upcomingMovies, ...upcomingMoviesList.results]);
                 setUpcomingMoviesIndex(upcomingMoviesIndex+1)
+                break;
+            case "search":
+                const searchData = await fetch(
+                    `https://api.themoviedb.org/3/search/movie?api_key=62dd59a78acdf594fa1c42daa3dd7408&language=en-US&page=${searchedMoviesIndex}&query=${searchKey}`
+                    );
+                const searchMovielist = await searchData.json();
+                setSearchedMovies([...searchedMovies, ...searchMovielist.results]);
+                setsearchedMoviesIndex(searchedMoviesIndex+1)
+                console.log(searchMovielist.result)
                 break;
             default:
                 break;
@@ -104,7 +123,7 @@ export const MovieProvider = ({children}) => {
         
     };
     return(
-        <MoviesContext.Provider value={{trigger,setTrigger,movieInfo,setMovieInfo,fetechMoreMovies,popularMoviesIndex,topMoviesIndex,nowMoviesIndex,upcomingMoviesIndex,popularMovies,setPopularMovies,topMovies,setTopMovies,nowMovies,setNowMovies,upcomingMovies,setUpcomingMovies }}>
+        <MoviesContext.Provider value={{setsearchedMoviesIndex,searchedMovies,fetchSearch,searchKey,setSearchKey,trigger,setTrigger,movieInfo,setMovieInfo,fetechMoreMovies,popularMoviesIndex,topMoviesIndex,nowMoviesIndex,upcomingMoviesIndex,popularMovies,setPopularMovies,topMovies,setTopMovies,nowMovies,setNowMovies,upcomingMovies,setUpcomingMovies }}>
             {children}
         </MoviesContext.Provider>
     )

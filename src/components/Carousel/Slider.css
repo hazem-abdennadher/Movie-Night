@@ -20,6 +20,10 @@
   left: 0;
   z-index: 1;
 }
+
+#section-search {
+  filter: invert(100%);
+}
 .search-bar {
   position: absolute;
   display: flex;
@@ -29,6 +33,7 @@
   border-radius: 8px;
   background-color: transparent;
   width: 35%;
+  min-width: 320px;
   top: 30px;
   left: 50%;
   padding: 10px;
@@ -158,6 +163,7 @@
 .description p {
   font-size: 1rem;
   margin-bottom: 20px;
+  min-width: 250px;
 }
 .description button {
   background-color: #be123c;
@@ -183,5 +189,36 @@
 @media screen and (max-width: 1368px) {
   .container-slider {
     width: 100%;
+  }
+}
+
+@media screen and (max-width: 720px) {
+  .description p {
+    font-size: 0.8rem;
+    margin-bottom: 20px;
+    width: 350px;
+  }
+  .container-dots {
+    position: absolute;
+    top: 90%;
+    left: 90%;
+    transform: translate(-90%, -90%);
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 3px;
+    z-index: 2;
+    width: 100%;
+  }
+  .dot::before {
+    top: 90%;
+    width: 10px;
+  }
+
+  .dot.active::before {
+    background-color: white;
+    top: 90%;
+    left: 5px;
   }
 }

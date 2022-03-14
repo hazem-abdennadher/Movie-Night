@@ -5,7 +5,7 @@ import SearchBar from "./SearchBar"
 import './Slider.css'
 
 const Slider = () => {
-    const {popularMovies} = useContext(MoviesContext)
+    const {popularMovies,setTrigger,setMovieInfo} = useContext(MoviesContext)
     const [slideIndex, setSlideIndex] = useState(1)
     useEffect(()=>{
         const id = setTimeout(()=>{
@@ -31,7 +31,7 @@ const Slider = () => {
 
             </div>
             <SearchBar/>
-            { popularMovies.length >0 && <Description movies={popularMovies.slice(0,5)} index={slideIndex-1}/>}
+            { popularMovies.length >0 && <Description movies={popularMovies.slice(0,5)} index={slideIndex-1} setTrigger={setTrigger} setMovieInfo={setMovieInfo} />}
             {popularMovies.slice(0,5).map((movie, index) => {
                 return (
                     <div

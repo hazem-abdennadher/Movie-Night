@@ -4,12 +4,15 @@ import Home from "./components/home/Home";
 import Section from "./components/Sections/Section";
 import Footer from "./components/Footer/Footer";
 import Popup from "./components/popup/Popup";
+import Scrollback from "./components/utility/ScrollBack";
 function App() {
   return (
     <>
       <BrowserRouter>
         <MovieProvider>
+          <Scrollback/>
           <Routes>
+            <Route path="/search" element ={<Section type={"search"} enableFilter enableShowMoreBtn enableSearch/>}/>  
             <Route path="/popular" element ={<Section type={"popular"} enableFilter enableShowMoreBtn/>}/>  
             <Route path="/upcoming" element ={<Section type={"upcoming"} enableFilter enableShowMoreBtn/>}/>  
             <Route path="/now" element ={<Section type={"now"} enableFilter enableShowMoreBtn/>}/>  
