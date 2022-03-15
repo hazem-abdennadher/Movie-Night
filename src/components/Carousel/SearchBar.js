@@ -11,7 +11,7 @@ const SearchBar = ({enableStyle =false}) => {
         if(searchKey!== ""){
             setsearchedMoviesIndex(1) 
             await fetchSearch()
-            let path = `/search`; 
+            let path = `/Movie-Night/search`; 
             navigate(path);
         }
     }
