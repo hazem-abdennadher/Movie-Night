@@ -182,20 +182,19 @@ button.active {
 }
 
 .show-more-btn:focus {
-  box-shadow: var(--background-color) 0 0 0 1.5px inset,
+  box-shadow: var(--main-color) 0 0 0 1.5px inset,
     rgba(45, 35, 66, 0.4) 0 2px 4px, rgba(45, 35, 66, 0.3) 0 7px 13px -3px,
-    var(--background-color) 0 -3px 0 inset;
+    var(--main-color) 0 -3px 0 inset;
 }
 
 .show-more-btn:hover {
   box-shadow: rgba(45, 35, 66, 0.4) 0 4px 8px,
-    rgba(45, 35, 66, 0.3) 0 7px 13px -3px,
-    var(--background-color) 0 -3px 0 inset;
+    rgba(45, 35, 66, 0.3) 0 7px 13px -3px, var(--main-color) 0 -3px 0 inset;
   transform: translateY(-2px);
 }
 
 .show-more-btn:active {
-  box-shadow: var(--background-color) 0 3px 7px inset;
+  box-shadow: var(--main-color) 0 3px 7px inset;
   transform: translateY(2px);
 }
 
