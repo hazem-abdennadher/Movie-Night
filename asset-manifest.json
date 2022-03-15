@@ -1,16 +1,16 @@
 {
   "files": {
-    "main.css": "/Movie-Night/static/css/main.5a0faf7b.css",
+    "main.css": "/Movie-Night/static/css/main.5a2e80d4.css",
     "main.js": "/Movie-Night/static/js/main.13728fd6.js",
     "static/media/not-found.png": "/Movie-Night/static/media/not-found.1172217f26bffea9728a.png",
     "static/media/search.png": "/Movie-Night/static/media/search.b24bb73406a58c05c480.png",
     "static/media/play-button.png": "/Movie-Night/static/media/play-button.22c8ced5495c94202427.png",
     "index.html": "/Movie-Night/index.html",
-    "main.5a0faf7b.css.map": "/Movie-Night/static/css/main.5a0faf7b.css.map",
+    "main.5a2e80d4.css.map": "/Movie-Night/static/css/main.5a2e80d4.css.map",
     "main.13728fd6.js.map": "/Movie-Night/static/js/main.13728fd6.js.map"
   },
   "entrypoints": [
-    "static/css/main.5a0faf7b.css",
+    "static/css/main.5a2e80d4.css",
     "static/js/main.13728fd6.js"
   ]
 }
