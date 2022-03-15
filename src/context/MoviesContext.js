@@ -31,7 +31,6 @@ export const MovieProvider = ({children}) => {
         const searched = await data.json()
         setSearchedMovies(searched.results)
         setsearchedMoviesIndex(2)
-        console.log(searched.results)
     }
     const fetechMoreMovies = async(type) =>{
         switch (type) {
@@ -75,7 +74,6 @@ export const MovieProvider = ({children}) => {
                 const searchMovielist = await searchData.json();
                 setSearchedMovies([...searchedMovies, ...searchMovielist.results]);
                 setsearchedMoviesIndex(searchedMoviesIndex+1)
-                console.log(searchMovielist.result)
                 break;
             default:
                 break;

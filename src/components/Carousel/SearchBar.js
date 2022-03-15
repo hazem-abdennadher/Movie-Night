@@ -15,10 +15,17 @@ const SearchBar = ({enableStyle =false}) => {
             navigate(path);
         }
     }
+    const submit = (e) =>{
+        
+        if(e.keyCode === 13) {
+            routeChange()
+        }
+    }
+
     
     return ( 
         <div className="search-bar" id={enableStyle?"section-search":""}>
-            <input type="text" placeholder="What do you want to watch?" value={searchKey} onChange={e=>{setSearchKey(e.target.value)}} />
+            <input id="usersearch" onKeyDown={(e)=> submit(e)} type="text" placeholder="What do you want to watch?" value={searchKey} onChange={e=>{setSearchKey(e.target.value)}} />
             <button onClick={e=>routeChange()}> <img src={search} alt="search icon"/></button>
         </div>
     );
