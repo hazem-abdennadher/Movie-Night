@@ -23,6 +23,7 @@
 
 #section-search {
   filter: invert(100%);
+  position: relative;
 }
 .search-bar {
   position: absolute;
@@ -161,7 +162,7 @@
   width: 2rem;
 }
 .description p {
-  font-size: 1rem;
+  font-size: 1.2rem;
   margin-bottom: 20px;
   min-width: 250px;
 }
@@ -194,9 +195,10 @@
 
 @media screen and (max-width: 720px) {
   .description p {
-    font-size: 0.8rem;
-    margin-bottom: 20px;
     width: 350px;
+  }
+  .container-slider {
+    height: 100vh;
   }
   .container-dots {
     position: absolute;
@@ -213,6 +215,40 @@
   }
   .dot::before {
     top: 90%;
+    width: 10px;
+  }
+
+  .dot.active::before {
+    background-color: white;
+    top: 90%;
+    left: 5px;
+  }
+}
+@media screen and (max-width: 420px) {
+  .description h1 {
+    font-size: 1.5rem;
+    max-width: 250px;
+  }
+  .description p {
+    font-size: 0.9rem;
+    width: 250px;
+    text-overflow: clip;
+    max-height: 250px;
+    overflow: hidden;
+  }
+  .container-dots {
+    position: absolute;
+    bottom: 5px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 3px;
+    z-index: 2;
+    width: 100%;
+  }
+  .dot::before {
+    bottom: 5px;
     width: 10px;
   }
 

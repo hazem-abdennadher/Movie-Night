@@ -12,12 +12,12 @@ function App() {
         <MovieProvider>
           <Scrollback/>
           <Routes>
-            <Route path="/search" element ={<Section type={"search"} enableFilter enableShowMoreBtn enableSearch/>}/>  
-            <Route path="/popular" element ={<Section type={"popular"} enableFilter enableShowMoreBtn/>}/>  
-            <Route path="/upcoming" element ={<Section type={"upcoming"} enableFilter enableShowMoreBtn/>}/>  
-            <Route path="/now" element ={<Section type={"now"} enableFilter enableShowMoreBtn/>}/>  
-            <Route path="/top" element ={<Section type={"top"} enableFilter enableShowMoreBtn/>}/>
-            <Route path="/" element ={<Home/>}/>  
+            <Route path="/Movie-Night/search" element ={<Section type={"search"} enableShowMoreBtn enableSearch/>}/>  
+            <Route path="/Movie-Night/popular" element ={<Section type={"popular"} enableFilter enableShowMoreBtn/>}/>  
+            <Route path="/Movie-Night/upcoming" element ={<Section type={"upcoming"} enableFilter enableShowMoreBtn/>}/>  
+            <Route path="/Movie-Night/now" element ={<Section type={"now"} enableFilter enableShowMoreBtn/>}/>  
+            <Route path="/Movie-Night/top" element ={<Section type={"top"} enableFilter enableShowMoreBtn/>}/>
+            <Route path="/Movie-Night" element ={<Home/>}/>  
           </Routes>
           <Popup />
         </MovieProvider>

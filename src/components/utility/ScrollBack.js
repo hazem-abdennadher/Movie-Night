@@ -4,6 +4,7 @@ import up from "../../Images/up.png"
 const Scrollback = () => {
     const [visible ,setVisible] = useState(false);
     window.onscroll = function() {scroll()};
+
     const scroll = ()=>{
         if (window.pageYOffset > 250) {
             setVisible(true)

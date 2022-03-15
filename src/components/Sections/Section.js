@@ -32,7 +32,7 @@ const Section = ({type,link,length ,enableFilter = false, enableSeeMore=false, e
                 break;
             case "search" : 
                 setMovieData(searchedMovies)
-                setTitle("Search : ");
+                setTitle("");
                 break
             default:
 
