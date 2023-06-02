@@ -1,9 +1,9 @@
-@import url("https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&display=swap');
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: "DM Sans";
+  font-family: 'DM Sans';
 }
 ::-webkit-scrollbar {
   width: 5px;
@@ -101,7 +101,7 @@ button.active {
   width: 100%;
 }
 .movie > .content {
-  padding: 5px;
+  padding: 10px;
 }
 .movie > .content p {
   color: #8d8d8d;
@@ -161,7 +161,7 @@ button.active {
   color: white;
   cursor: pointer;
   display: inline-flex;
-  font-family: "JetBrains Mono", monospace;
+  font-family: 'JetBrains Mono', monospace;
   height: 48px;
   justify-content: center;
   line-height: 1;
@@ -218,7 +218,7 @@ button.active {
   background-color: white;
   cursor: pointer;
   display: inline-flex;
-  font-family: "JetBrains Mono", monospace;
+  font-family: 'JetBrains Mono', monospace;
   height: 48px;
   width: 48px;
   justify-content: center;
@@ -256,7 +256,9 @@ button.active {
     opacity: 1;
   }
 }
-
+main {
+  min-height: 100vh;
+}
 /*-------------Footer-------------*/
 .footer {
   background-color: #be123c;
@@ -268,6 +270,7 @@ button.active {
   align-items: center;
   gap: 20px;
   color: white;
+  margin-top: auto;
 }
 .socials {
   display: flex;
